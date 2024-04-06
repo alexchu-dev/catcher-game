@@ -1,4 +1,5 @@
 # Catcher Game
+Demo link: https://alexchu.dev/portfolio/catcher-game
 
 This is a catcher game built with Phaser 3 as a game engine and Node.js Express.js together with MongoDB as backend.
 
