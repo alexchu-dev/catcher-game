@@ -199,6 +199,7 @@ export default class GameScene extends Phaser.Scene {
     )
     nameInput.setAttribute("placeholder", "Enter your name")
     nameInput.setAttribute("id", "nameInput")
+    nameInput.required = true;
     nameLabel.appendChild(nameInput)
 
     const submitButton = document.createElement("button")
@@ -230,13 +231,15 @@ export default class GameScene extends Phaser.Scene {
             } else {
               console.log("Failed to submit score.")
             }
-            form.remove()
+            
           })
         }
+        form.remove()
+        this.scene.start("StartScene") // Return to the start scene after submitting the score
       } catch (err) {
         console.log(err)
       }
-      this.scene.start("StartScene") // Return to the start scene after submitting the score
+      
     })
   }
 }
