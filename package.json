@@ -1,0 +1,25 @@
+{
+  "scripts": {
+    "start": "nodemon server.js -e html,js,css"
+  },
+  "name": "catcher-game",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexchu-dev/catcher-game.git"
+  },
+  "author": "Alex C",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexchu-dev/catcher-game/issues"
+  },
+  "homepage": "https://github.com/alexchu-dev/catcher-game/#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-handlebars": "^7.1.2",
+    "mongoose": "^8.3.0"
+  }
+}

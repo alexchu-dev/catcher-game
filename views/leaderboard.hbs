@@ -1,0 +1,25 @@
+<main>
+  <h1>Leader Board</h1>
+  {{#if noScores}}
+    {{noScoresMsg}}
+  {{else}}
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each leaderBoard}}
+          <tr>
+            <td>{{incremented @index}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.score}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/if}}
+</main>
