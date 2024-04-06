@@ -2,6 +2,7 @@
 // Github for this repo: https://github.com/alexchu-dev/catcher-game
 const express = require("express")
 const app = express()
+const cors = require("cors")
 const HTTP_PORT = process.env.PORT || 8000
 require("dotenv").config()
 
@@ -12,6 +13,7 @@ require("dotenv").config()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static("assets"))
+app.use(cors())
 
 const exphbs = require("express-handlebars")
 app.engine(

@@ -78,6 +78,24 @@ export default class GameScene extends Phaser.Scene {
       null,
       this
     )
+
+    // Mobile touch controls testing
+    this.input.on('pointerdown', (pointer) => {
+      this.isPointerDown = true; // Set touch state to active
+      this.handlePointerMove(pointer);
+    });
+  
+    this.input.on('pointerup', () => {
+      this.isPointerDown = false; // When touch ends, set to false
+      this.player.setVelocityX(0); // Velocity x to 0 = stop moving
+    });
+  
+    this.input.on('pointermove', (pointer) => {
+      if (this.isPointerDown) { // Condition - only moves player if touch is active
+        this.handlePointerMove(pointer);
+      }
+    });
+    
   }
 
   /* Update function - note that the time and delta are passed in. Delta must be used in here, otherwise it would go by FPS not seconds.
@@ -112,6 +130,16 @@ export default class GameScene extends Phaser.Scene {
   /*
    * Custom functions
    */
+  
+  // Testing touch controls
+  handlePointerMove(pointer) {
+    const { width } = this.sys.game.config; // Get the width of the game, important for touch devices
+    if (pointer.x < width / 2) {
+      this.player.setVelocityX(-300);
+    } else {
+      this.player.setVelocityX(300);
+    }
+  }
 
   /* Get a random drop from the combined array of enemy and ally drops
    * Parameters: None
