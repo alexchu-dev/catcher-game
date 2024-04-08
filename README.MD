@@ -12,7 +12,7 @@ This project use MongoDB and it requires you to have your Database set up alread
 
 You may set up your own in localhost, or easier option is to use Mongo Atlas. Please find the official document in here: https://www.mongodb.com/docs/atlas/tutorial/create-atlas-account/
 
-the format is as following. 
+Then create a .env file under the root with the formatting below.
 
 ```
 MONGODB_URI = "mongodb+srv://[yoururl]:[password]/catcher-game"
