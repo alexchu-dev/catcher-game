@@ -58,7 +58,7 @@ server.js in the root level is the Express JS file, it contains the definition o
 It uses Express JS Handlebars as template engine. The views folder contains the template and layouts contains the layout file. They are at minimum setting as they are not essential for this project.
 
 ### Game files
-The game files are located in assets/js where the phaser.js is the engine library and the game.js sets the config for the game. game.backup.js can be neglected as that is the tutorial example from Phaser to start with.
+The game files are located in assets/js where the phaser.js is the engine library and the game.js sets the config for the game.
 
 There are three scenes in separate files:
 *Start Scene - assets/js/scene/startScene.js
