@@ -57,29 +57,7 @@ app.get("/", (req, res) => {
   })
 })
 
-// Endpoint to render the leaderboard view
-app.get("/leaderboard", async (req, res) => {
-  console.log(req.query)
-  try {
-    const leaderBoard = await Score.find().sort({ score: -1 }).limit(100).lean() // Sort by score in desc, limit 100 records
-    let noScores = false
-    if (leaderBoard.length === 0) {
-      noScores = true
-    }
-    // The leaderBoard object is passed to the leaderboard view.
-    res.render("leaderboard", {
-      layout: "default",
-      title: "Leader Board",
-      noScores: noScores,
-      noScoresMsg: "No scores found.",
-      leaderBoard: leaderBoard,
-    })
-    console.log(leaderBoard)
-    return
-  } catch (err) {
-    res.status(500).json({ message: err.message })
-  }
-})
+
 
 // Endpoint to get the leaderboard in JSON format for Phaser
 app.get("/leaderboard-json", async (req, res) => {
@@ -108,6 +86,30 @@ app.get("/leaderboard-json", async (req, res) => {
       })
     }
     res.json({ page, totalPages, leaderBoard })
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
+
+// Endpoint to render the leaderboard view
+app.get("/leaderboard", async (req, res) => {
+  console.log(req.query)
+  try {
+    const leaderBoard = await Score.find().sort({ score: -1 }).limit(100).lean() // Sort by score in desc, limit 100 records
+    let noScores = false
+    if (leaderBoard.length === 0) {
+      noScores = true
+    }
+    // The leaderBoard object is passed to the leaderboard view.
+    res.render("leaderboard", {
+      layout: "default",
+      title: "Leader Board",
+      noScores: noScores,
+      noScoresMsg: "No scores found.",
+      leaderBoard: leaderBoard,
+    })
+    console.log(leaderBoard)
+    return
   } catch (err) {
     res.status(500).json({ message: err.message })
   }

@@ -8,6 +8,17 @@ The drop spawns 4 types of allies and 2 types of enemies, collecting allies get 
 The drops spawns with random size and random directions, try your best to avoid the enemies and get high score!
 
 ## Getting Started
+This project use MongoDB and it requires you to have your Database set up already.
+
+You may set up your own in localhost, or easier option is to use Mongo Atlas. Please find the official document in here: https://www.mongodb.com/docs/atlas/tutorial/create-atlas-account/
+
+the format is as following. 
+
+```
+MONGODB_URI = "mongodb+srv://[yoururl]:[password]/catcher-game"
+```
+
+
 In Terminal, run npm i to install the required dependencies.
 
 ```bash
