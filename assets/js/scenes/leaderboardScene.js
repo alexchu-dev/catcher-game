@@ -12,10 +12,6 @@ export default class LeaderboardScene extends Phaser.Scene {
     this.cameras.main.setZoom(1.0)
     const { centerX, centerY } = this.cameras.main
     this.add
-      .image(centerX, centerY, "startBackground")
-      .setTint(0x0000ff)
-      .setAlpha(0.5)
-    this.add
       .text(centerX, 50, "Leaderboard", { font: "bold 24px Arial" })
       .setOrigin(0.5, 0.5)
       .setColor("#f0f0f0")
