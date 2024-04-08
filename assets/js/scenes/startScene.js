@@ -4,7 +4,7 @@ export default class StartScene extends Phaser.Scene {
   }
   // Sprite frame parameters defined
   preload() {
-    this.load.image("startBackground", "../bg2.png")
+    this.load.image("gameBackground", "../bg1.png")
     this.load.spritesheet("button", "../button2.png", {
       frameWidth: 184,
       frameHeight: 47,
@@ -14,7 +14,7 @@ export default class StartScene extends Phaser.Scene {
   create() {
     this.cameras.main.setZoom(1.0) // Set the camera zoom
     const { centerX, centerY } = this.cameras.main // Get the center of the screen
-    this.add.image(centerX, centerY, "startBackground")
+    this.add.image(centerX, centerY, "gameBackground")
 
     // Start button and Start text. Tried to combine the button image and the text, but could not get it to work, therefore it is separated in here. To make sure the button sprite works when hovering the text, extra code was added.
     const startButton = this.add
