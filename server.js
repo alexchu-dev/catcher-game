@@ -57,11 +57,8 @@ app.get("/", (req, res) => {
   })
 })
 
-
-
 // Endpoint to get the leaderboard in JSON format for Phaser
 app.get("/leaderboard-json", async (req, res) => {
-  console.log(`Request to API: ${req.query}`)
   const page = parseInt(req.query.page) || 1 // Parse the page query parameter, default to 1
   const limit = 10 // Limit to 10 records, so that the leaderboard can be paginated in Phaser
   const skip = (page - 1) * limit // Calculate the number of records to skip based on the page number query
@@ -93,7 +90,6 @@ app.get("/leaderboard-json", async (req, res) => {
 
 // Endpoint to render the leaderboard view
 app.get("/leaderboard", async (req, res) => {
-  console.log(req.query)
   try {
     const leaderBoard = await Score.find().sort({ score: -1 }).limit(100).lean() // Sort by score in desc, limit 100 records
     let noScores = false
@@ -108,7 +104,6 @@ app.get("/leaderboard", async (req, res) => {
       noScoresMsg: "No scores found.",
       leaderBoard: leaderBoard,
     })
-    console.log(leaderBoard)
     return
   } catch (err) {
     res.status(500).json({ message: err.message })
@@ -118,7 +113,6 @@ app.get("/leaderboard", async (req, res) => {
 // Endpoint for the game client to submit the score
 app.post("/submit-score", async (req, res) => {
   const { name, score } = req.body
-  console.log(name, score)
   // Validating if name is provided in the body
   if (!name) {
     return res.status(400).json({ message: "Name is required" })
@@ -126,7 +120,6 @@ app.post("/submit-score", async (req, res) => {
   try {
     const newScore = new Score({ name, score }) // Create new Score object
     await newScore.save() // Save the new document to MongoDB
-    console.log(newScore)
     res.status(200).json(newScore)
   } catch (err) {
     res.status(500).json({ message: err.message })

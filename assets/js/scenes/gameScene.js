@@ -168,7 +168,6 @@ export default class GameScene extends Phaser.Scene {
    */
   catchDrop(player, drops) {
     drops.disableBody(true, true) // Disable the body of the drop after overlapping
-    console.log(drops.texture.key)
     if (drops.texture.key === "e1" || drops.texture.key === "e2") {
       player.setTint(0xff0000) // Set the player to red if it catches an enemy drop
       if (this.score - 100 < 0) {

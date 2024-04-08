@@ -64,7 +64,6 @@ export default class LeaderboardScene extends Phaser.Scene {
         throw new Error("Network response was not ok")
       }
       const data = await response.json()
-      console.log(data)
       return data
     } catch (error) {
       console.error(error)
@@ -79,14 +78,13 @@ export default class LeaderboardScene extends Phaser.Scene {
    * Side effects: if there are existing leaderboard entries, destroy them. Then display the leaderboard entries on the screen.
    */
   async displayLeaderboard(page) {
-    console.log(page)
     if (this.leaderboardEntries) {
       this.leaderboardEntries.forEach((entry) => entry.destroy())
     }
     this.leaderboardEntries = [] // Reset leaderboardEntries array
 
     const leaderboardData = await this.fetchData(page) // Fetch leaderboard data from the server
-    console.log(leaderboardData)
+
     this.totalPages = leaderboardData.totalPages // Set totalPages to the totalPages from the server
     leaderboardData.leaderBoard.forEach((entry, index) => {
       const y = 120 + index * 30
@@ -124,7 +122,6 @@ export default class LeaderboardScene extends Phaser.Scene {
    */
   changePage(amount) {
     this.currentPage += amount
-    console.log(this.currentPage)
     if (this.currentPage < 1) this.currentPage = 1
     if (this.currentPage > this.totalPages) this.currentPage = this.totalPages
     this.displayLeaderboard(this.currentPage)
